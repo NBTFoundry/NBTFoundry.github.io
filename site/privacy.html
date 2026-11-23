@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · NBT Manager</title>
+<meta name="description" content="What the NBT Manager phone app keeps, sends and asks for.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/mark-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/mark-dark.svg" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a href="./" class="brand" aria-label="NBTFoundry">
+      <picture>
+        <source srcset="assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+        <img src="assets/logo-light.svg" alt="NBTFoundry" height="32">
+      </picture>
+    </a>
+    <nav><a href="./#apps">Apps</a><a href="https://github.com/NBTFoundry">GitHub</a></nav>
+  </div>
+</header>
+<main class="wrap section prose">
+  <h1>Privacy</h1>
+  <p class="lede-left">NBT Manager for Android (<code>org.nbtfoundry.manager</code>). Updated November 23, 2026.</p>
+
+  <h2>Nothing collected</h2>
+  <p>The app has no account, no analytics, no advertising and no tracking. NBTFoundry receives no data
+    from it.</p>
+
+  <h2>Kept on your phone</h2>
+  <ul>
+    <li>Your paired cars: their names and addresses, and the phone's signing key for each, which stays in
+      the Android Keystore and never leaves the phone.</li>
+    <li>Your library of application packages, your language and beta preferences.</li>
+    <li>Logs and crash reports you read from a car. They leave the phone only when you share them.</li>
+  </ul>
+  <p>Uninstalling the app deletes all of it. The app is excluded from Android backups.</p>
+
+  <h2>Connections</h2>
+  <ul>
+    <li><b>Your car</b>, over its own Wi-Fi, when you pair, read, install or change something.</li>
+    <li><b>GitHub</b>, when you open Get apps or download from it: the catalog from
+      <code>nbtfoundry.github.io</code> and packages from <code>github.com</code>. GitHub sees your IP
+      address, as for any web request (<a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>).</li>
+  </ul>
+  <p>The app makes no other connection.</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><b>Camera:</b> only to scan the Wi-Fi code on the car's screen. No picture is stored or sent.</li>
+    <li><b>Wi-Fi and nearby devices:</b> to join the car's Wi-Fi. On Android 12 and earlier, Android
+      requires the location permission for this; the app never reads your location.</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p>Questions: <a href="https://github.com/NBTFoundry/mobile-app/issues">github.com/NBTFoundry/mobile-app/issues</a>.</p>
+</main>
+<footer class="wrap footer">
+  <p>MPL-2.0 · <a href="./">NBTFoundry</a></p>
+</footer>
+</body>
+</html>

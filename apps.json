@@ -1,0 +1,68 @@
+{
+ "apps": [
+  {
+   "id": "manager",
+   "repo": "NBTFoundry/manager",
+   "name": "NBT Manager",
+   "summary": "The head unit side: the iDrive menu entry, signed installs and updates with rollback, the application bridge.",
+   "license": "MPL-2.0",
+   "category": "system"
+  },
+  {
+   "id": "doom",
+   "repo": "NBTFoundry/nf-doom",
+   "name": "Doom",
+   "summary": "Doom (PrBoom+), with the shareware episode.",
+   "license": "GPL-2.0-or-later; game data separate",
+   "category": "game"
+  },
+  {
+   "id": "snes9x",
+   "repo": "NBTFoundry/nf-snes9x",
+   "name": "Snes9x",
+   "summary": "Super Nintendo games you own, from the phone or a USB stick.",
+   "license": "MPL-2.0; Snes9x non-commercial",
+   "category": "emulator"
+  },
+  {
+   "id": "fbneo",
+   "repo": "NBTFoundry/nf-fbneo",
+   "name": "FinalBurn Neo",
+   "summary": "Arcade games from zipped romsets.",
+   "license": "MPL-2.0; FinalBurn Neo non-commercial",
+   "category": "emulator"
+  },
+  {
+   "id": "pcsx",
+   "repo": "NBTFoundry/nf-pcsx-rearmed",
+   "name": "PCSX ReARMed",
+   "summary": "PlayStation games you own, from a USB stick.",
+   "license": "GPL-2.0-or-later",
+   "category": "emulator"
+  },
+  {
+   "id": "picodrive",
+   "repo": "NBTFoundry/nf-picodrive",
+   "name": "PicoDrive",
+   "summary": "Mega Drive, Mega-CD, 32X and Master System games you own.",
+   "license": "MPL-2.0; PicoDrive non-commercial",
+   "category": "emulator"
+  },
+  {
+   "id": "gauges",
+   "repo": "NBTFoundry/nf-gauges",
+   "name": "Gauges",
+   "summary": "Live engine gauges read from the car's own computers, no OBD adapter.",
+   "license": "MPL-2.0",
+   "category": "tool"
+  },
+  {
+   "id": "android-auto",
+   "repo": "NBTFoundry/nf-android-auto",
+   "name": "Android Auto",
+   "summary": "NBT-AAD, installed and updated like any application.",
+   "license": "MPL-2.0; NBT-AAD PolyForm Noncommercial 1.0.0",
+   "category": "tool"
+  }
+ ]
+}

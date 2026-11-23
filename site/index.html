@@ -1,0 +1,129 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NBTFoundry</title>
+<meta name="description" content="Applications for BMW NBT Evo head units, installed from your phone. Every install approved on the car.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="NBTFoundry">
+<meta property="og:description" content="Applications for BMW NBT Evo head units, installed from your phone.">
+<meta property="og:image" content="https://nbtfoundry.github.io/assets/avatar-512.png">
+<link rel="icon" href="assets/mark-light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/mark-dark.svg" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a href="#top" class="brand" aria-label="NBTFoundry">
+      <picture>
+        <source srcset="assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+        <img src="assets/logo-light.svg" alt="NBTFoundry" height="32">
+      </picture>
+    </a>
+    <nav>
+      <a href="#apps">Apps</a>
+      <a href="#start">Get started</a>
+      <a href="#build">Build</a>
+      <a href="https://github.com/NBTFoundry">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow">BMW NBT Evo · iDrive 6</p>
+    <h1>Apps for your head unit.<br><span>Installed from your phone.</span></h1>
+    <p class="lede">NBT Manager adds an application platform to the iDrive screen. Pick an app on your
+      phone, send it over the car's Wi-Fi, approve it on the car.</p>
+    <div class="actions">
+      <a class="button primary" href="#apps">Browse apps</a>
+      <a class="button" href="#start">Get started</a>
+    </div>
+    <picture class="hero-art">
+      <source srcset="assets/hero-dark.png" media="(prefers-color-scheme: dark)">
+      <img src="assets/hero-light.png" width="1920" height="760"
+           alt="The phone app and the desktop installer reach NBT Manager on the head unit; the driver approves on iDrive">
+    </picture>
+  </section>
+
+  <section id="apps" class="wrap section">
+    <div class="section-head">
+      <h2>Applications</h2>
+      <p>Signed releases from each app's repository. The phone app lists the same ones.</p>
+    </div>
+    <div class="grid"><!-- apps --></div>
+    <p class="note">No game, ROM or BIOS is included, apart from Doom's shareware episode: use only games
+      you have the right to use.</p>
+  </section>
+
+  <section id="start" class="wrap section">
+    <div class="section-head">
+      <h2>Get started</h2>
+      <p>One cable install, then everything from the phone.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3>Install NBT Manager</h3>
+        <p>Once per car, with the <a href="https://github.com/NBTFoundry/installer">desktop installer</a>
+          over an ENET cable, or from the phone app over a Wi-Fi ENET adapter.</p>
+        <!-- manager -->
+      </li>
+      <li>
+        <h3>Pair your phone</h3>
+        <p>The <a href="https://github.com/NBTFoundry/mobile-app">NBT Manager app</a> for Android. Join the
+          car's Wi-Fi and compare six digits with the car. No binary release yet: build it from source.</p>
+      </li>
+      <li>
+        <h3>Install apps</h3>
+        <p>Open <b>Get apps</b>, download, install. The car checks each package's signature and the
+          driver confirms it on iDrive. A bad update rolls back by itself.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap section">
+    <ul class="features">
+      <li><h3>Approved on the car</h3><p>The phone only asks. Every install and removal is confirmed on iDrive.</p></li>
+      <li><h3>Safe updates</h3><p>A new version must start and stay healthy, or the previous one comes back.</p></li>
+      <li><h3>Your files</h3><p>Send games and files from the phone, or import them from a USB stick.</p></li>
+      <li><h3>The car's controls</h3><p>The iDrive controller, a USB gamepad and the car's speakers.</p></li>
+      <li><h3>Live settings</h3><p>Change an app's settings from the phone while it runs.</p></li>
+      <li><h3>Seven languages</h3><p>English, French, German, Italian, Spanish, Chinese and Japanese.</p></li>
+    </ul>
+  </section>
+
+  <section id="build" class="wrap section">
+    <div class="section-head">
+      <h2>Build your own</h2>
+      <p>C++ for the iDrive screen, compiled with open-source tools only.</p>
+    </div>
+    <div class="links">
+      <a href="https://github.com/NBTFoundry/sdk"><b>SDK</b><span>Screen, audio, input, files, settings; a libretro host for emulators.</span></a>
+      <a href="https://github.com/NBTFoundry/template"><b>Template</b><span>The bare minimum to start an application.</span></a>
+      <a href="https://github.com/NBTFoundry/examples"><b>Examples</b><span>Controls, settings, status; an LVGL interface.</span></a>
+      <a href="https://github.com/NBTFoundry/toolchains"><b>Toolchain</b><span>Clang and LLD for Linux, macOS and Windows.</span></a>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="warning">
+      <b>Installing or modifying this software can brick your head unit.</b> Recovery may require professional
+      service or replacement, at your expense. Provided as is; use at your own risk, subject to applicable law.
+      Use applications only while parked.
+      <a href="https://github.com/NBTFoundry/.github/blob/main/DISCLAIMER.md">Read the disclaimer</a>.
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <p>Not affiliated with or endorsed by BMW AG or any other trademark owner named here. BMW, iDrive and NBT
+    are trademarks of BMW AG; DOOM of id Software; Super Nintendo of Nintendo; PlayStation of Sony Interactive
+    Entertainment Inc.; Android Auto of Google LLC.</p>
+  <p>MPL-2.0 · <a href="https://github.com/NBTFoundry/NBTFoundry.github.io">Source</a> ·
+    <a href="catalog.json">catalog.json</a> · Updated <!-- generated --></p>
+</footer>
+</body>
+</html>

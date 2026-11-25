@@ -119,9 +119,9 @@ class FakeGitHub:
                                                    "published_at": "2026-11-01T00:00:00Z",
                                                    "html_url": f"https://example/{tag}", "assets": [asset]})
 
-    def releases(self, repo, token):
-        found = [r for r in self.by_repo.get(repo, []) if build_catalog.TAG.fullmatch(r["tag_name"])]
-        return sorted(found, key=lambda r: tuple(map(int, r["tag_name"][1:].split("."))), reverse=True)
+    def releases(self, repo, token, app=None):
+        found = [r for r in self.by_repo.get(repo, []) if build_catalog.tag_version(r["tag_name"], app)]
+        return sorted(found, key=lambda r: build_catalog.tag_version(r["tag_name"], app), reverse=True)
 
     def download(self, asset, target):
         self.downloads.append(asset["id"])
@@ -153,6 +153,13 @@ class CatalogTest(unittest.TestCase):
 
     def versions(self, catalog):
         return [(r["version"], r["prerelease"]) for r in catalog["apps"][0]["releases"]]
+
+    def test_tags_of_a_repository_with_several_applications(self):
+        self.assertEqual(build_catalog.tag_version("clock-v1.2.3", "clock"), (1, 2, 3))
+        self.assertEqual(build_catalog.tag_version("v1.2.3", "clock"), (1, 2, 3))
+        self.assertIsNone(build_catalog.tag_version("clock2-v1.2.3", "clock"))
+        self.assertIsNone(build_catalog.tag_version("clock-v1.2", "clock"))
+        self.assertIsNone(build_catalog.tag_version("doom-v1.0.0", None))
 
     def test_stable_and_newer_beta(self):
         self.github.add("NBTFoundry/nf-doom", "v1.0.1", package(self.keys.apps, version="1.0.1", sequence=1000001))

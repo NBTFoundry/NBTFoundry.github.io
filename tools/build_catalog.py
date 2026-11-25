@@ -70,15 +70,23 @@ def request(url, token, accept="application/vnd.github+json"):
     return urllib.request.urlopen(req, timeout=60)
 
 
-def releases(repo, token):
-    """Published vX.Y.Z releases, newest version first."""
-    with request(f"{API}/repos/{repo}/releases?per_page=50", token) as response:
+def tag_version(tag, app):
+    """(X, Y, Z) of a release tag vX.Y.Z, or <app>-vX.Y.Z in a repository that releases several
+    applications (NBTFoundry/community-apps); None for any other tag."""
+    prefix = f"{app}-"
+    match = TAG.fullmatch(tag[len(prefix):] if app and tag.startswith(prefix) else tag)
+    return (int(match[1]), int(match[2]), int(match[3])) if match else None
+
+
+def releases(repo, token, app=None):
+    """Published releases of the application, newest version first."""
+    with request(f"{API}/repos/{repo}/releases?per_page=100", token) as response:
         listed = json.load(response)
     found = []
     for release in listed:
-        match = TAG.fullmatch(release.get("tag_name") or "")
+        match = tag_version(release.get("tag_name") or "", app)
         if match and not release.get("draft"):
-            found.append(((int(match[1]), int(match[2]), int(match[3])), release))
+            found.append((match, release))
     return [release for _, release in sorted(found, key=lambda item: item[0], reverse=True)]
 
 
@@ -156,7 +164,7 @@ def catalog_entry(entry, keys, token, cached, work, log):
     """The application's newest verified stable release and a newer pre-release, newest first."""
     stable = beta = None
     attempts = 0
-    for release in releases(entry["repo"], token):
+    for release in releases(entry["repo"], token, entry["id"]):
         if release["tag_name"][1:] in entry.get("withdrawn", []) or (release.get("prerelease") and beta):
             continue
         if attempts == ATTEMPTS:

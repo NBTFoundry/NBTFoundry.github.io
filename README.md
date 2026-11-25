@@ -18,7 +18,7 @@ Add an entry to `apps.json`:
 | Field | |
 | --- | --- |
 | `id` | The package's app id (`--app`); a release whose package has another id is left out |
-| `repo` | `owner/name`; releases tagged `vX.Y.Z`, one `.nbt` each (the manager's `app-release.yml`) |
+| `repo` | `owner/name`; releases tagged `vX.Y.Z`, one `.nbt` each (the manager's `app-release.yml`), or `<id>-vX.Y.Z` in `NBTFoundry/community-apps` |
 | `name`, `summary`, `license`, `category` | Shown as is (`category`: `game`, `emulator`, `tool`, `system`) |
 | `icon` | Optional, `icons/<name>.png` in `site/` |
 | `withdrawn` | Optional, versions never to list |

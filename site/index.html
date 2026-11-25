@@ -13,6 +13,7 @@
 <link rel="icon" href="assets/mark-light.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/mark-dark.svg" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="style.css">
+<script src="apps.js" defer></script>
 </head>
 <body>
 <header class="bar">
@@ -53,11 +54,20 @@
   </section>
 
   <section id="apps" class="wrap section">
-    <div class="section-head">
-      <h2>Applications</h2>
-      <p>Signed releases from each app's repository. The phone app lists the same ones.</p>
+    <div class="section-head shelf-head">
+      <div>
+        <h2>Applications</h2>
+        <p>Signed releases from each app's repository. The phone app lists the same ones.</p>
+      </div>
+      <div class="shelf-nav" hidden>
+        <button type="button" class="shelf-button" data-step="-1" aria-label="Previous applications">&#8249;</button>
+        <button type="button" class="shelf-button" data-step="1" aria-label="More applications">&#8250;</button>
+      </div>
     </div>
-    <div class="grid"><!-- apps --></div>
+    <div class="shelf" id="app-grid" role="region" aria-label="Applications" aria-busy="true" tabindex="0">
+      <p class="note">Loading applications…</p>
+      <noscript><p class="note">The list needs JavaScript: see <a href="catalog.json">catalog.json</a>.</p></noscript>
+    </div>
     <p class="note">No game, ROM or BIOS is included, apart from Doom's shareware episode: use only games
       you have the right to use.</p>
   </section>
@@ -72,7 +82,7 @@
         <h3>Install NBT Manager</h3>
         <p>Once per car, with the <a href="https://github.com/NBTFoundry/installer/releases">desktop installer</a>
           (Windows, macOS, Linux) over an ENET cable, or from the phone app over a Wi-Fi ENET adapter.</p>
-        <!-- manager -->
+        <div id="manager-release"></div>
       </li>
       <li>
         <h3>Pair your phone</h3>
@@ -157,7 +167,7 @@
     Entertainment Inc.; Mega Drive, Mega-CD, 32X and Master System of Sega Corporation; Android Auto of
     Google LLC.</p>
   <p>MPL-2.0 · <a href="privacy.html">Privacy</a> · <a href="https://github.com/sponsors/fpoussin">Sponsor</a> · <a href="https://github.com/NBTFoundry/NBTFoundry.github.io">Source</a> ·
-    <a href="catalog.json">catalog.json</a> · Updated <!-- generated --></p>
+    <a href="catalog.json">catalog.json</a> · Updated <span id="catalog-generated"></span></p>
 </footer>
 </body>
 </html>

@@ -7,7 +7,9 @@ The landing page and the application catalog the phone app reads:
 - `apps.json`: the reviewed list of applications.
 - `tools/build_catalog.py`: each app's newest stable release and a newer pre-release (beta), every
   file verified against the manager's `release/*.pem` (`tools/nbt_files.py`).
-- `tools/render_site.py`: `site/` plus the app cards.
+- `site/`: the landing page. `site/apps.js` reads `catalog.json` in the browser and renders the
+  application shelf, NBT Manager's release and the update date: the same file as the phone app.
+- `tools/render_site.py`: `site/` plus `catalog.json`.
 - `.github/workflows/pages.yml`: on push, every 30 minutes and by hand. GitHub pauses the schedule
   after 60 days without a commit here: re-enable it under Actions.
 

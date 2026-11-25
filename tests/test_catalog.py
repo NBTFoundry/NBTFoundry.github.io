@@ -206,23 +206,16 @@ class CatalogTest(unittest.TestCase):
 
 class SiteTest(unittest.TestCase):
     def test_render(self):
-        release = {"version": "1.0.2", "sequence": "1000002", "prerelease": False, "date": "2026-11-22T07:06:01Z",
-                   "page": "https://example/v1.0.2", "files": [{"url": "https://example/a.nbt", "size": 2534276}]}
-        catalog = {"generated": "2026-11-23T09:00:00Z", "apps": [
-            {"id": "manager", "name": "NBT Manager", "summary": "s", "repo": "NBTFoundry/manager", "license": "MPL-2.0",
-             "category": "system", "icon": None, "releases": [dict(release, prerelease=True)]},
+        catalog = {"schema": 1, "generated": "2026-11-23T09:00:00Z", "apps": [
             {"id": "x", "name": "<b>X</b>", "summary": "s", "repo": "NBTFoundry/nf-x", "license": "MPL-2.0",
-             "category": "game", "icon": None, "releases": []},
-            {"id": "doom", "name": "Doom", "summary": "s", "repo": "NBTFoundry/nf-doom", "license": "GPL",
-             "category": "game", "icon": None, "releases": [release]}]}
+             "category": "game", "icon": None, "releases": []}]}
         with tempfile.TemporaryDirectory() as out:
             render_site.render(catalog, ROOT / "site", Path(out, "site"))
-            page = Path(out, "site", "index.html").read_text()
-            self.assertNotIn("<!--", page.split("</head>")[1].replace("<!-- SPDX", ""))
-            self.assertLess(page.index('id="app-doom"'), page.index('id="app-x"'))
-            self.assertIn("&lt;b&gt;X&lt;/b&gt;", page)
-            self.assertIn("Download 1.0.2", page)
             self.assertEqual(json.loads(Path(out, "site", "catalog.json").read_text()), catalog)
+            self.assertTrue(Path(out, "site", "apps.js").is_file())
+            self.assertFalse(list(Path(out, "site").rglob("*.license")))
+            with self.assertRaises(SystemExit):
+                render_site.render({"apps": None}, ROOT / "site", Path(out, "bad"))
 
 
 if __name__ == "__main__":

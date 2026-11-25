@@ -137,7 +137,7 @@ nav a:hover { color: var(--ink); text-decoration: none; }
 .features h3::before { content: ""; display: block; width: 22px; height: 4px; border-radius: 2px; background: var(--accent); margin-bottom: 12px; }
 .features p { color: var(--muted); margin-top: 6px; font-size: 15px; }
 
-.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
 .links a {
   display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: 16px;
   background: var(--panel); border: 1px solid var(--line); color: var(--ink);

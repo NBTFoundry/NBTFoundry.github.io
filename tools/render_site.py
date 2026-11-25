@@ -4,11 +4,15 @@
 and the landing page read (site/apps.js renders the application cards from it)."""
 
 import argparse
+import hashlib
 import json
 import shutil
 from pathlib import Path
 
 HOOKS = ('id="app-grid"', 'id="manager-release"', 'id="catalog-generated"', 'src="apps.js"')
+# Pages lets browsers keep a file 10 minutes: a page names these with their hash, so a reload
+# after a deploy never runs a new page with an old script or stylesheet.
+VERSIONED = (("apps.js", 'src="{}"'), ("style.css", 'href="{}"'))
 
 
 def render(catalog, site, output):
@@ -21,6 +25,12 @@ def render(catalog, site, output):
     if output.exists():
         shutil.rmtree(output)
     shutil.copytree(site, output, ignore=shutil.ignore_patterns("*.license"))
+    for page in output.glob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        for name, attribute in VERSIONED:
+            digest = hashlib.sha256((output / name).read_bytes()).hexdigest()[:12]
+            text = text.replace(attribute.format(name), attribute.format(f"{name}?v={digest}"))
+        page.write_text(text, encoding="utf-8")
     (output / "catalog.json").write_text(json.dumps(catalog, separators=(",", ":")) + "\n", encoding="ascii")
     (output / ".nojekyll").write_text("")
 

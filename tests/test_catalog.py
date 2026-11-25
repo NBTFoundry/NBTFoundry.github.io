@@ -213,6 +213,9 @@ class SiteTest(unittest.TestCase):
             render_site.render(catalog, ROOT / "site", Path(out, "site"))
             self.assertEqual(json.loads(Path(out, "site", "catalog.json").read_text()), catalog)
             self.assertTrue(Path(out, "site", "apps.js").is_file())
+            page = Path(out, "site", "index.html").read_text()
+            self.assertRegex(page, r'src="apps\.js\?v=[0-9a-f]{12}"')
+            self.assertRegex(page, r'href="style\.css\?v=[0-9a-f]{12}"')
             self.assertFalse(list(Path(out, "site").rglob("*.license")))
             with self.assertRaises(SystemExit):
                 render_site.render({"apps": None}, ROOT / "site", Path(out, "bad"))

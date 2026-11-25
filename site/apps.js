@@ -140,8 +140,8 @@
       return;
     }
     const apps = catalog.apps.filter((a) => a && a.id !== "manager");
-    // Released first, then catalog (allowlist) order.
-    apps.sort((a, b) => Number(!(a.releases || []).length) - Number(!(b.releases || []).length));
+    // By name, A to Z.
+    apps.sort((a, b) => String(a.name).localeCompare(String(b.name), "en", { sensitivity: "base", numeric: true }));
     grid.replaceChildren(...(await Promise.all(apps.map(card))));
     grid.removeAttribute("aria-busy");
     wireShelf(grid);

@@ -130,7 +130,8 @@
     if (!grid) return;
     let catalog;
     try {
-      const response = await fetch("catalog.json", { cache: "no-cache", headers: { Accept: "application/json" } });
+      // Pages lets browsers keep the file 10 minutes: an unused query and no-store skip every cache.
+      const response = await fetch(`catalog.json?t=${Date.now()}`, { cache: "no-store", headers: { Accept: "application/json" } });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       catalog = await response.json();
       if (!catalog || !Array.isArray(catalog.apps)) throw new Error("no apps");

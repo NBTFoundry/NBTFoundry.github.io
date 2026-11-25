@@ -5,10 +5,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NBTFoundry</title>
-<meta name="description" content="Applications for BMW NBT Evo head units, installed from your phone. Every install approved on the car.">
+<meta name="description" content="Run new applications on BMW NBT Evo head units: a runtime on the car, a C++ SDK and open-source toolchain, and a phone app to install them.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="NBTFoundry">
-<meta property="og:description" content="Applications for BMW NBT Evo head units, installed from your phone.">
+<meta property="og:description" content="Run new applications on BMW NBT Evo head units: a runtime on the car, a C++ SDK and open-source toolchain, and a phone app to install them.">
 <meta property="og:image" content="https://nbtfoundry.github.io/assets/avatar-512.png">
 <link rel="icon" href="assets/mark-light.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/mark-dark.svg" media="(prefers-color-scheme: dark)">
@@ -36,9 +36,11 @@
 <main id="top">
   <section class="hero wrap">
     <p class="eyebrow">BMW NBT Evo · iDrive 6</p>
-    <h1>Apps for your head unit.<br><span>Installed from your phone.</span></h1>
-    <p class="lede">NBT Manager adds an application platform to the iDrive screen. Pick an app on your
-      phone, send it over the car's Wi-Fi, approve it on the car.</p>
+    <h1>Apps that run on iDrive.<br><span>And the tools to write them.</span></h1>
+    <p class="lede">NBT Manager runs on the head unit and hosts applications. It gives them the screen,
+      the iDrive controller, USB gamepads, the speakers and car data, watches them run, and brings back
+      the last good version when an update fails. Developers write apps in C++ with the SDK and an
+      open-source toolchain; drivers install them from their phone.</p>
     <div class="actions">
       <a class="button primary" href="#apps">Browse apps</a>
       <a class="button" href="#start">Get started</a>
@@ -99,7 +101,9 @@
   <section id="build" class="wrap section">
     <div class="section-head">
       <h2>Build your own</h2>
-      <p>C++ for the iDrive screen, compiled with open-source tools only.</p>
+      <p>Write an app in C++, run it on a Linux desktop while you work, compile it for the car with
+        open-source tools, and publish signed releases from CI. The manager's bridge gives it the
+        controller, gamepads, audio, car data and the network.</p>
     </div>
     <div class="links">
       <a href="https://github.com/NBTFoundry/sdk"><b>SDK</b><span>Screen, audio, input, files, settings; a libretro host for emulators.</span></a>

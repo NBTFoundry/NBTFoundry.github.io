@@ -4,8 +4,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NBTFoundry: new apps for your BMW's iDrive screen</title>
-<meta name="description" content="Android Auto, live engine gauges and classic games on BMW iDrive 6 (NBT Evo) screens. Free and open source: installed from your phone, approved on the car.">
+<title>NBTFoundry: free apps and Android Auto for BMW iDrive 6 (NBT Evo)</title>
+<meta name="description" content="Free, open-source apps for BMW NBT Evo (iDrive 6) head units and the Toyota GR Supra: Android Auto, live engine gauges, Doom and retro games. Installed from your Android phone, approved on the car.">
+<link rel="canonical" href="https://nbtfoundry.github.io/">
 <meta name="color-scheme" content="light dark">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nbtfoundry.github.io/">
@@ -19,6 +20,18 @@
 <link rel="icon" href="assets/mark-dark.svg" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="style.css">
 <script src="apps.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://nbtfoundry.github.io/#org","name":"NBTFoundry","url":"https://nbtfoundry.github.io/","logo":"https://nbtfoundry.github.io/assets/avatar-512.png","sameAs":["https://github.com/NBTFoundry"]},
+{"@type":"SoftwareApplication","name":"NBT Manager","applicationCategory":"UtilitiesApplication","operatingSystem":"Android; BMW NBT Evo (iDrive 6)","description":"Installs, updates and runs apps on BMW NBT Evo (iDrive 6) head units: Android Auto, live engine gauges, Doom and retro games.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"license":"https://mozilla.org/MPL/2.0/","publisher":{"@id":"https://nbtfoundry.github.io/#org"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. NBT Manager and every app are free and open source, with no account, no ads and no tracking. You only buy the cable."}},
+{"@type":"Question","name":"Which cars does it work on?","acceptedAnswer":{"@type":"Answer","text":"Cars with BMW's NBT Evo head unit and iDrive 6, whose home screen shows large tiles side by side: many BMW F and G series from about 2016 to 2019, MINI with navigation and the Toyota GR Supra."}},
+{"@type":"Question","name":"Does it change iDrive?","acceptedAnswer":{"@type":"Answer","text":"It adds one entry, App Manager, to the iDrive menu. Your apps start from there; it replaces nothing BMW put on the screen."}},
+{"@type":"Question","name":"Can I undo it?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each app is removed from the phone, and the desktop installer removes NBT Manager itself."}},
+{"@type":"Question","name":"Does it work with an iPhone?","acceptedAnswer":{"@type":"Answer","text":"No. The phone app is for Android only."}}
+]}]}
+</script>
 </head>
 <body>
 <header class="bar">
@@ -33,6 +46,7 @@
       <a href="#apps">Apps</a>
       <a href="#car">My car</a>
       <a href="#start">Get started</a>
+      <a href="#guides">Guides</a>
       <a href="#faq">FAQ</a>
       <a href="#build">Developers</a>
       <a href="#community">Community</a>
@@ -45,7 +59,7 @@
 <main id="top">
   <section class="hero">
     <div class="wrap hero-inner">
-      <p class="eyebrow">For BMW iDrive 6 · Free and open source</p>
+      <p class="eyebrow">For BMW iDrive 6 (NBT Evo) · Free and open source</p>
       <h1>New apps for your BMW's iDrive screen.</h1>
       <p class="lede">Android Auto, live engine gauges and classic games, on the display your car already has.
         Pick them on your phone, approve them on the car.</p>
@@ -139,8 +153,9 @@
         <figcaption><b>Not yet.</b> A vertical list: the earlier NBT and older.</figcaption>
       </figure>
       <ul class="checks">
-        <li><b>The car</b><span>BMWs built from about 2016 to 2019 with the tile home screen, many F and G series.
-          Years vary by model: the menu is the reliable check.</span></li>
+        <li><b>The car</b><span>BMWs built from about 2016 to 2019 with the tile home screen, many F and G series,
+          MINI with navigation and the Toyota GR Supra. Years vary by model: the menu is the reliable check.
+          <a href="compatibility.html">Models and details</a>.</span></li>
         <li><b>The phone</b><span>An Android phone. The phone app is not available for iPhone.</span></li>
         <li><b>Not sure?</b><span><a href="https://github.com/orgs/NBTFoundry/discussions/categories/q-a">Ask in
           the discussions</a> with your model, year and a photo of the home screen.</span></li>
@@ -212,6 +227,20 @@
     </div>
   </section>
 
+  <section id="guides" class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Guides</p>
+      <h2>Step by step</h2>
+    </div>
+    <div class="links">
+      <a href="install.html"><b>Install apps on NBT Evo</b><span>The cable, SSH enabled for you, pairing, Get apps. No command line.</span></a>
+      <a href="compatibility.html"><b>Does my car have NBT Evo?</b><span>The home screen check, models and years, Supra and MINI.</span></a>
+      <a href="android-auto.html"><b>Free Android Auto</b><span>Wireless, on the iDrive screen, updated from the phone. No activation to buy.</span></a>
+      <a href="games.html"><b>Doom and retro games</b><span>SNES, PlayStation, Mega Drive, arcade, with a USB gamepad.</span></a>
+      <a href="developers.html"><b>Write an app</b><span>The SDK, the free toolchain, the template and agent skills.</span></a>
+    </div>
+  </section>
+
   <section class="wrap section">
     <div class="section-head">
       <p class="eyebrow">Why it is safe to try</p>
@@ -236,6 +265,10 @@
       <details><summary>What does it cost?</summary>
         <p>Nothing. NBT Manager and every app are free and open source, with no account, no ads and no tracking.
           You only buy the cable.</p></details>
+      <details><summary>Which cars does it work on?</summary>
+        <p>Cars with BMW's NBT Evo head unit and iDrive 6, whose home screen shows large tiles side by side: many
+          BMW F and G series from about 2016 to 2019, MINI with navigation and the Toyota GR Supra.
+          <a href="compatibility.html">Models and details</a>.</p></details>
       <details><summary>Does it change iDrive?</summary>
         <p>It adds one entry, App Manager, to the iDrive menu. Your apps start from there; it replaces nothing
           BMW put on the screen.</p></details>
@@ -340,6 +373,8 @@
     Entertainment Inc.; Mega Drive, Mega-CD, 32X and Master System of Sega Corporation; Android, Android Auto
     and Google Play of Google LLC; iPhone of Apple Inc.</p>
   <p>MPL-2.0 · <a href="privacy.html">Privacy</a> · <a href="https://github.com/sponsors/fpoussin">Sponsor</a> · <a href="https://github.com/NBTFoundry/NBTFoundry.github.io">Source</a> ·
+    <a href="install.html">Install guide</a> · <a href="compatibility.html">Compatibility</a> ·
+    <a href="android-auto.html">Android Auto</a> · <a href="games.html">Games</a> · <a href="developers.html">Developers</a> ·
     <a href="catalog.json">catalog.json</a> · Updated <span id="catalog-generated"></span></p>
 </footer>
 </body>

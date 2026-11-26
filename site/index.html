@@ -61,6 +61,11 @@
             <img src="screens/gauges-live.webp" width="960" height="360"
                  alt="Gauges on the iDrive screen: torque and power curves, wheel speeds, the gear and the xDrive torque split">
           </picture>
+          <picture class="slide" data-slide="engine">
+            <source srcset="screens/engine-drive.webp" media="(prefers-reduced-motion: reduce)">
+            <img data-src="screens/engine-live.webp" src="screens/engine-drive.webp" width="960" height="360"
+                 alt="Gauges on the iDrive screen: boost pressure, lambda and ignition timing dials">
+          </picture>
           <picture class="slide" data-slide="doom">
             <source srcset="screens/doom.webp" media="(prefers-reduced-motion: reduce)">
             <img data-src="screens/doom-live.webp" src="screens/doom.webp" width="960" height="360"
@@ -69,7 +74,8 @@
         </div>
         <figcaption>
           <span class="display-tabs" role="group" aria-label="On the screen">
-            <button type="button" class="is-on" data-show="gauges" aria-pressed="true">Live gauges</button>
+            <button type="button" class="is-on" data-show="gauges" aria-pressed="true">Drivetrain</button>
+            <button type="button" data-show="engine" aria-pressed="false">Engine</button>
             <button type="button" data-show="doom" aria-pressed="false">Doom</button>
           </span>
           <span class="display-note">Screen captures of the apps. Gauges with simulated readings.</span>
@@ -185,19 +191,23 @@
           A bad update rolls back by itself.</p>
       </li>
     </ol>
+    <figure class="pair">
+      <picture>
+        <source srcset="assets/phone-install-still.webp" media="(prefers-reduced-motion: reduce)">
+        <img src="assets/phone-install.webp" width="1200" height="450" loading="lazy"
+             alt="The phone app sends an install; the car's screen asks to review and confirm it, installs it and checks it; the phone then shows it as done">
+      </picture>
+      <figcaption>Tap Install on the phone, then confirm on the car's screen.</figcaption>
+    </figure>
     <div class="flow">
-      <figure>
-        <img src="assets/manager-install.gif" width="960" height="360" loading="lazy"
-             alt="On the car: an update arrives, the driver reviews and installs it, the health check passes">
-        <figcaption>On the car: review, install, health check.</figcaption>
-      </figure>
       <figure>
         <picture>
           <source srcset="assets/hero-dark.png" media="(prefers-color-scheme: dark)">
           <img src="assets/hero-light.png" width="1920" height="760" loading="lazy"
                alt="The phone app over Wi-Fi and the desktop installer over the ENET cable reach NBT Manager on the head unit">
         </picture>
-        <figcaption>No laptop? The phone app can do the first install too, with a Wi-Fi ENET adapter.</figcaption>
+        <figcaption><b>No laptop?</b> The phone app can do the first install too, with a
+          Wi-Fi ENET adapter.</figcaption>
       </figure>
     </div>
   </section>

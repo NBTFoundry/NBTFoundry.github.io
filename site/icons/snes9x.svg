@@ -1,0 +1,2 @@
+<!-- SPDX-License-Identifier: MPL-2.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7468c4"/><stop offset="1" stop-color="#3a3170"/></linearGradient></defs><rect width="64" height="64" rx="10" fill="url(#g)"/><rect x="7" y="21" width="50" height="23" rx="11.5" fill="#f3f1fb"/><path d="M18.5 26.5h5v4h4v5h-4v4h-5v-4h-4v-5h4z" fill="#3a3170"/><circle cx="40.5" cy="36" r="3.3" fill="#6a5fc0"/><circle cx="48" cy="29.5" r="3.3" fill="#6a5fc0"/></svg>

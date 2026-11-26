@@ -8,7 +8,9 @@ The landing page and the application catalog the phone app reads:
 - `tools/build_catalog.py`: each app's newest stable release and a newer pre-release (beta), every
   file verified against the manager's `release/*.pem` (`tools/nbt_files.py`).
 - `site/`: the landing page. `site/apps.js` reads `catalog.json` in the browser and renders the
-  application shelf, NBT Manager's release and the update date: the same file as the phone app.
+  application cards (the featured ones first, the others A to Z), NBT Manager's release and the
+  update date: the same file as the phone app.
+- `tools/share-card.html`: the link preview, `site/assets/share.png` (the command is in the file).
 - `tools/render_site.py`: `site/` plus `catalog.json`.
 - `.github/workflows/pages.yml`: on push, every 30 minutes and by hand. GitHub pauses the schedule
   after 60 days without a commit here: re-enable it under Actions.
@@ -22,7 +24,10 @@ Add an entry to `apps.json`:
 | `id` | The package's app id (`--app`); a release whose package has another id is left out |
 | `repo` | `owner/name`; releases tagged `vX.Y.Z`, one `.nbt` each (the manager's `app-release.yml`), or `<id>-vX.Y.Z` in `NBTFoundry/community-apps` |
 | `name`, `summary`, `license`, `category` | Shown as is (`category`: `game`, `emulator`, `tool`, `system`) |
-| `icon` | Optional, `icons/<name>.png` in `site/` |
+| `title` | Optional, what the app gives ("PlayStation games"): the card's title, `name` under it |
+| `icon` | Optional, `icons/<name>.svg` (or `.png`, `.webp`) in `site/` |
+| `cover` | Optional, `screens/<name>.webp` (or `.png`) in `site/`, 8:3: a featured card's capture |
+| `featured` | Optional, `true`: a large card before the others, in `apps.json` order |
 | `withdrawn` | Optional, versions never to list |
 
 ## Local
@@ -36,7 +41,8 @@ python3 -I tools/render_site.py --catalog out/catalog.json --output _site
 ## Catalog
 
 `schema` 1. `apps[]` in `apps.json` order: `id`, `name`, `summary`, `repo`, `license`, `category`,
-`icon`, `releases[]` (newest first, at most a beta then a stable): `version`, `sequence` (a string),
+`icon`, `title`, `cover`, `featured` (the last three for the landing page; the phone app ignores them),
+`releases[]` (newest first, at most a beta then a stable): `version`, `sequence` (a string),
 `prerelease`, `date`, `page`, `compat`, `bridge`, `properties`, `text`, `files[]` (`name`, `url`,
 `size`, `sha256`, `version`, `sequence`; the manager's also `format`). NBT Manager's releases carry two
 files, the release and its step release.

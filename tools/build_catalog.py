@@ -26,6 +26,7 @@ ATTEMPTS = 6
 TAG = re.compile(r"v(0|[1-9][0-9]{0,2})\.(0|[1-9][0-9]{0,2})\.(0|[1-9][0-9]{0,2})\Z")
 REPO = re.compile(r"[A-Za-z0-9-]{1,39}/[A-Za-z0-9._-]{1,100}\Z")
 ICON = re.compile(r"icons/[a-z0-9_-]{1,48}\.(png|svg|webp)\Z")
+COVER = re.compile(r"screens/[a-z0-9_-]{1,48}\.(png|webp)\Z")
 TEXT_LIMITS = {"name": 40, "summary": 160, "license": 80, "category": 20}
 
 
@@ -52,10 +53,17 @@ def load_allowlist(path):
                 fail(f"{app}: {field} must be 1 to {limit} characters")
         if entry.get("icon") is not None and not (isinstance(entry["icon"], str) and ICON.fullmatch(entry["icon"])):
             fail(f"{app}: icon must be icons/<name>.png|svg|webp")
+        if entry.get("cover") is not None and not (isinstance(entry["cover"], str) and COVER.fullmatch(entry["cover"])):
+            fail(f"{app}: cover must be screens/<name>.png|webp")
+        title = entry.get("title")
+        if title is not None and not (isinstance(title, str) and 0 < len(title) <= 40 and title == title.strip()):
+            fail(f"{app}: title must be 1 to 40 characters")
+        if not isinstance(entry.get("featured", False), bool):
+            fail(f"{app}: featured must be true or false")
         withdrawn = entry.get("withdrawn", [])
         if not isinstance(withdrawn, list) or not all(isinstance(v, str) for v in withdrawn):
             fail(f"{app}: withdrawn must list versions")
-        unknown = set(entry) - {"id", "repo", "icon", "withdrawn", *TEXT_LIMITS}
+        unknown = set(entry) - {"id", "repo", "icon", "cover", "title", "featured", "withdrawn", *TEXT_LIMITS}
         if unknown:
             fail(f"{app}: unknown fields {sorted(unknown)}")
     return entries
@@ -187,6 +195,10 @@ def catalog_entry(entry, keys, token, cached, work, log):
     chosen = [r for r in (beta, stable) if r]
     out = {k: entry[k] for k in ("id", "name", "summary", "repo", "license", "category")}
     out["icon"] = entry.get("icon")
+    # For the landing page; the phone app ignores them.
+    out["title"] = entry.get("title")
+    out["cover"] = entry.get("cover")
+    out["featured"] = entry.get("featured", False)
     out["releases"] = chosen
     return out
 

@@ -195,13 +195,30 @@ class CatalogTest(unittest.TestCase):
 
     def test_allowlist_checks(self):
         for entry in ({"id": "Doom", "repo": "a/b"}, {"id": "doom", "repo": "a"},
-                      {"id": "doom", "repo": "a/b", "icon": "../x.png"}, {"id": "doom", "repo": "a/b", "extra": 1}):
+                      {"id": "doom", "repo": "a/b", "icon": "../x.png"}, {"id": "doom", "repo": "a/b", "extra": 1},
+                      {"id": "doom", "repo": "a/b", "cover": "icons/x.png"}, {"id": "doom", "repo": "a/b", "title": ""},
+                      {"id": "doom", "repo": "a/b", "featured": "yes"}):
             self.allow([entry])
             with self.assertRaises(SystemExit):
                 build_catalog.load_allowlist(self.apps)
 
+    def test_landing_page_fields(self):
+        self.allow([{"id": "doom", "repo": "NBTFoundry/nf-doom", "title": "Doom", "featured": True,
+                     "icon": "icons/doom.svg", "cover": "screens/doom.webp"}])
+        app = self.build()["apps"][0]
+        self.assertEqual((app["title"], app["featured"], app["icon"], app["cover"]),
+                         ("Doom", True, "icons/doom.svg", "screens/doom.webp"))
+        self.allow([{"id": "doom", "repo": "NBTFoundry/nf-doom"}])
+        app = self.build()["apps"][0]
+        self.assertEqual((app["title"], app["featured"], app["cover"]), (None, False, None))
+
     def test_repository_allowlist(self):
-        self.assertGreater(len(build_catalog.load_allowlist(ROOT / "apps.json")), 1)
+        entries = build_catalog.load_allowlist(ROOT / "apps.json")
+        self.assertGreater(len(entries), 1)
+        for entry in entries:
+            for field in ("icon", "cover"):
+                if entry.get(field):
+                    self.assertTrue((ROOT / "site" / entry[field]).is_file(), entry[field])
 
 
 class SiteTest(unittest.TestCase):

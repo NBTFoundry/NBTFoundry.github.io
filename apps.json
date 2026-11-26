@@ -9,12 +9,39 @@
    "category": "system"
   },
   {
+   "id": "android-auto",
+   "repo": "NBTFoundry/nf-android-auto",
+   "name": "Android Auto",
+   "title": "Android Auto",
+   "summary": "Your phone's maps, music and calls on the iDrive screen. Built on NBT-AAD.",
+   "license": "MPL-2.0; NBT-AAD PolyForm Noncommercial 1.0.0",
+   "category": "tool",
+   "icon": "icons/android-auto.svg",
+   "featured": true
+  },
+  {
+   "id": "gauges",
+   "repo": "NBTFoundry/nf-gauges",
+   "name": "Gauges",
+   "title": "Live engine gauges",
+   "summary": "Boost, temperatures, timing and more, read from the car's own computers. No OBD adapter.",
+   "license": "MPL-2.0",
+   "category": "tool",
+   "icon": "icons/gauges.svg",
+   "cover": "screens/gauges.webp",
+   "featured": true
+  },
+  {
    "id": "doom",
    "repo": "NBTFoundry/nf-doom",
    "name": "Doom",
-   "summary": "Doom (PrBoom+), with the shareware episode.",
+   "title": "Doom",
+   "summary": "The 1993 shooter (PrBoom+) with its shareware episode, on the iDrive controller or a gamepad.",
    "license": "GPL-2.0-or-later; game data separate",
    "category": "game",
+   "icon": "icons/doom.svg",
+   "cover": "screens/doom.webp",
+   "featured": true,
    "withdrawn": [
     "1.0.20",
     "1.0.21"
@@ -24,49 +51,41 @@
    "id": "snes9x",
    "repo": "NBTFoundry/nf-snes9x",
    "name": "Snes9x",
+   "title": "Super Nintendo games",
    "summary": "Super Nintendo games you own, from the phone or a USB stick.",
    "license": "MPL-2.0; Snes9x non-commercial",
-   "category": "emulator"
+   "category": "emulator",
+   "icon": "icons/snes9x.svg"
   },
   {
    "id": "fbneo",
    "repo": "NBTFoundry/nf-fbneo",
    "name": "FinalBurn Neo",
+   "title": "Arcade games",
    "summary": "Arcade games from zipped romsets.",
    "license": "MPL-2.0; FinalBurn Neo non-commercial",
-   "category": "emulator"
+   "category": "emulator",
+   "icon": "icons/fbneo.svg"
   },
   {
    "id": "pcsx",
    "repo": "NBTFoundry/nf-pcsx-rearmed",
    "name": "PCSX ReARMed",
+   "title": "PlayStation games",
    "summary": "PlayStation games you own, from a USB stick.",
    "license": "GPL-2.0-or-later",
-   "category": "emulator"
+   "category": "emulator",
+   "icon": "icons/pcsx.svg"
   },
   {
    "id": "picodrive",
    "repo": "NBTFoundry/nf-picodrive",
    "name": "PicoDrive",
+   "title": "Mega Drive games",
    "summary": "Mega Drive, Mega-CD, 32X and Master System games you own.",
    "license": "MPL-2.0; PicoDrive non-commercial",
-   "category": "emulator"
-  },
-  {
-   "id": "gauges",
-   "repo": "NBTFoundry/nf-gauges",
-   "name": "Gauges",
-   "summary": "Live engine gauges read from the car's own computers, no OBD adapter.",
-   "license": "MPL-2.0",
-   "category": "tool"
-  },
-  {
-   "id": "android-auto",
-   "repo": "NBTFoundry/nf-android-auto",
-   "name": "Android Auto",
-   "summary": "NBT-AAD, installed and updated like any application.",
-   "license": "MPL-2.0; NBT-AAD PolyForm Noncommercial 1.0.0",
-   "category": "tool"
+   "category": "emulator",
+   "icon": "icons/picodrive.svg"
   }
  ]
 }

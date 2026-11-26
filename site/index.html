@@ -4,12 +4,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NBTFoundry</title>
-<meta name="description" content="Run new applications on BMW NBT Evo head units: a runtime on the car, a C++ SDK and open-source toolchain, and a phone app to install them.">
+<title>NBTFoundry: new apps for your BMW's iDrive screen</title>
+<meta name="description" content="Android Auto, live engine gauges and classic games on BMW iDrive 6 (NBT Evo) screens. Free and open source: installed from your phone, approved on the car.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="NBTFoundry">
-<meta property="og:description" content="Run new applications on BMW NBT Evo head units: a runtime on the car, a C++ SDK and open-source toolchain, and a phone app to install them.">
-<meta property="og:image" content="https://nbtfoundry.github.io/assets/avatar-512.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nbtfoundry.github.io/">
+<meta property="og:title" content="New apps for your BMW's iDrive screen">
+<meta property="og:description" content="Android Auto, live engine gauges and classic games on BMW iDrive 6. Free and open source: installed from your phone, approved on the car.">
+<meta property="og:image" content="https://nbtfoundry.github.io/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/mark-light.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" href="assets/mark-dark.svg" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="style.css">
@@ -26,8 +31,11 @@
     </a>
     <nav>
       <a href="#apps">Apps</a>
+      <a href="#car">My car</a>
       <a href="#start">Get started</a>
-      <a href="#build">Build</a>
+      <a href="#faq">FAQ</a>
+      <a href="#build">Developers</a>
+      <a href="#community">Community</a>
       <a href="#support" class="nav-sponsor"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 14.2C3.6 11.1 1.2 8.5 1.2 5.7a3.4 3.4 0 0 1 3.4-3.4c1.4 0 2.6.8 3.4 2 .8-1.2 2-2 3.4-2a3.4 3.4 0 0 1 3.4 3.4c0 2.8-2.4 5.4-6.8 8.5z"/></svg>Sponsor</a>
       <a href="https://github.com/NBTFoundry">GitHub</a>
     </nav>
@@ -35,36 +43,63 @@
 </header>
 
 <main id="top">
-  <section class="hero wrap">
-    <p class="eyebrow">BMW NBT Evo · iDrive 6</p>
-    <h1>Apps that run on iDrive.<br><span>And the tools to write them.</span></h1>
-    <p class="lede">NBT Manager runs on the head unit and hosts applications. It gives them the screen,
-      the iDrive controller, USB gamepads, the speakers and car data, watches them run, and brings back
-      the last good version when an update fails. Developers write apps in C++ with the SDK and an
-      open-source toolchain; drivers install them from their phone.</p>
-    <div class="actions">
-      <a class="button primary" href="#apps">Browse apps</a>
-      <a class="button" href="#start">Get started</a>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">For BMW iDrive 6 · Free and open source</p>
+      <h1>New apps for your BMW's iDrive screen.</h1>
+      <p class="lede">Android Auto, live engine gauges and classic games, on the display your car already has.
+        Pick them on your phone, approve them on the car.</p>
+      <div class="actions">
+        <a class="button primary" href="#apps">See the apps</a>
+        <a class="button ghost" href="#car">Will it work on my car?</a>
+      </div>
+
+      <figure class="display" id="display">
+        <div class="display-screen">
+          <picture class="slide is-on" data-slide="gauges">
+            <source srcset="screens/gauges-drive.webp" media="(prefers-reduced-motion: reduce)">
+            <img src="screens/gauges-live.webp" width="960" height="360"
+                 alt="Gauges on the iDrive screen: torque and power curves, wheel speeds, the gear and the xDrive torque split">
+          </picture>
+          <picture class="slide" data-slide="doom">
+            <source srcset="screens/doom.webp" media="(prefers-reduced-motion: reduce)">
+            <img data-src="screens/doom-live.webp" src="screens/doom.webp" width="960" height="360"
+                 alt="Doom on the iDrive screen">
+          </picture>
+        </div>
+        <figcaption>
+          <span class="display-tabs" role="group" aria-label="On the screen">
+            <button type="button" class="is-on" data-show="gauges" aria-pressed="true">Live gauges</button>
+            <button type="button" data-show="doom" aria-pressed="false">Doom</button>
+          </span>
+          <span class="display-note">Screen captures of the apps. Gauges with simulated readings.</span>
+        </figcaption>
+      </figure>
     </div>
-    <picture class="hero-art">
-      <source srcset="assets/hero-dark.png" media="(prefers-color-scheme: dark)">
-      <img src="assets/hero-light.png" width="1920" height="760"
-           alt="The phone app and the desktop installer reach NBT Manager on the head unit; the driver approves on iDrive">
-    </picture>
+  </section>
+
+  <section class="wrap fork" aria-label="Where to start">
+    <a class="fork-tile" href="#apps">
+      <span class="eyebrow">Drivers</span>
+      <b>Put apps on my car</b>
+      <span>See what is available, check your car and install from your phone.</span>
+    </a>
+    <a class="fork-tile" href="#build">
+      <span class="eyebrow">Developers</span>
+      <b>Write an app</b>
+      <span>A C++ SDK, a free compiler and a template. No car needed to start.</span>
+    </a>
   </section>
 
   <section id="apps" class="wrap section">
-    <div class="section-head shelf-head">
-      <div>
-        <h2>Applications</h2>
-        <p>Signed releases from each app's repository. The phone app lists the same ones.</p>
-      </div>
-      <div class="shelf-nav" hidden>
-        <button type="button" class="shelf-button" data-step="-1" aria-label="Previous applications">&#8249;</button>
-        <button type="button" class="shelf-button" data-step="1" aria-label="More applications">&#8250;</button>
-      </div>
+    <div class="section-head">
+      <p class="eyebrow">Apps</p>
+      <h2>What you can run</h2>
+      <p>All free. Install them from the phone app's <b>Get apps</b> tab: <a href="#start">how to get started</a>.</p>
     </div>
-    <div class="shelf" id="app-grid" role="region" aria-label="Applications" aria-busy="true" tabindex="0">
+    <div class="featured" id="app-featured" aria-label="Featured applications"></div>
+    <h3 class="sub-head" id="app-more-head" hidden>More apps</h3>
+    <div class="app-grid" id="app-grid" role="region" aria-label="Applications" aria-busy="true">
       <p class="note">Loading applications…</p>
       <noscript><p class="note">The list needs JavaScript: see <a href="catalog.json">catalog.json</a>.</p></noscript>
     </div>
@@ -72,32 +107,106 @@
       you have the right to use.</p>
   </section>
 
+  <section id="car" class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Compatibility</p>
+      <h2>Will it work on my car?</h2>
+      <p>It needs BMW's NBT Evo head unit with iDrive 6. The home screen tells you.</p>
+    </div>
+    <div class="compat">
+      <figure class="compat-screen ok">
+        <svg viewBox="0 0 320 120" role="img" aria-label="A home screen of large tiles side by side">
+          <rect width="320" height="120" fill="#0a0d12"/>
+          <g fill="#1a2230" stroke="#2c3850"><rect x="14" y="16" width="92" height="88" rx="2"/><rect x="114" y="16" width="92" height="88" rx="2" stroke="#e9eef4" stroke-width="1.5"/><rect x="214" y="16" width="92" height="88" rx="2"/></g>
+          <g fill="#8fa0b8"><rect x="22" y="24" width="40" height="5" rx="1"/><rect x="122" y="24" width="52" height="5" rx="1" fill="#e9eef4"/><rect x="222" y="24" width="34" height="5" rx="1"/></g>
+          <g fill="#2a3648"><rect x="22" y="40" width="76" height="38" rx="1"/><rect x="122" y="40" width="76" height="38" rx="1"/><rect x="222" y="40" width="76" height="38" rx="1"/><rect x="22" y="86" width="50" height="4" rx="1"/><rect x="122" y="86" width="58" height="4" rx="1"/><rect x="222" y="86" width="44" height="4" rx="1"/></g>
+        </svg>
+        <figcaption><b>Supported.</b> Large tiles side by side: iDrive 6.</figcaption>
+      </figure>
+      <figure class="compat-screen no">
+        <svg viewBox="0 0 320 120" role="img" aria-label="A home screen with a vertical list of entries">
+          <rect width="320" height="120" fill="#0a0d12"/>
+          <rect x="14" y="30" width="130" height="14" rx="1" fill="#1a2230" stroke="#e9eef4"/>
+          <g fill="#8fa0b8"><rect x="20" y="17" width="60" height="5" rx="1"/><rect x="20" y="35" width="74" height="5" rx="1" fill="#e9eef4"/><rect x="20" y="53" width="52" height="5" rx="1"/><rect x="20" y="69" width="66" height="5" rx="1"/><rect x="20" y="85" width="44" height="5" rx="1"/><rect x="20" y="101" width="58" height="5" rx="1"/></g>
+          <rect x="170" y="16" width="136" height="88" rx="2" fill="#141a24"/>
+        </svg>
+        <figcaption><b>Not yet.</b> A vertical list: the earlier NBT and older.</figcaption>
+      </figure>
+      <ul class="checks">
+        <li><b>The car</b><span>BMWs built from about 2016 to 2019 with the tile home screen, many F and G series.
+          Years vary by model: the menu is the reliable check.</span></li>
+        <li><b>The phone</b><span>An Android phone. The phone app is not available for iPhone.</span></li>
+        <li><b>Not sure?</b><span><a href="https://github.com/orgs/NBTFoundry/discussions/categories/q-a">Ask in
+          the discussions</a> with your model, year and a photo of the home screen.</span></li>
+      </ul>
+    </div>
+  </section>
+
   <section id="start" class="wrap section">
     <div class="section-head">
-      <h2>Get started</h2>
-      <p>One cable install, then everything from the phone.</p>
+      <p class="eyebrow">Get started</p>
+      <h2>One cable install, then everything from the phone</h2>
+      <p>Read the <a href="#warning">warning</a> first: changing a head unit's software is at your own risk.</p>
     </div>
+    <ul class="needs">
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v5M15 3v5M6.5 8h11v4a5.5 5.5 0 0 1-11 0zM12 17.5V21"/></svg>
+        <div><b>An ENET cable</b><span>It joins the car's diagnostic socket, under the dashboard, to a computer's
+          network port. About 15 to 25 € online.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v10H5zM2.5 19h19"/></svg>
+        <div><b>A computer, once</b><span>Windows, macOS or Linux, for the first install only.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 16 21H8a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 8 3zM11 18h2"/></svg>
+        <div><b>An Android phone</b><span>For apps, updates and settings, over the car's own Wi-Fi.</span></div>
+      </li>
+    </ul>
     <ol class="steps">
       <li>
         <h3>Install NBT Manager</h3>
-        <p>Once per car, with the <a href="https://github.com/NBTFoundry/installer/releases">desktop installer</a>
-          (Windows, macOS, Linux) over an ENET cable, or from the phone app over a Wi-Fi ENET adapter.</p>
+        <p>Once per car. Plug in the cable, open the
+          <a href="https://github.com/NBTFoundry/installer/releases">desktop installer</a>, press Connect, then
+          Install. It asks before it changes anything on the car.</p>
         <div id="manager-release"></div>
       </li>
       <li>
         <h3>Pair your phone</h3>
-        <p>The <a href="https://github.com/NBTFoundry/mobile-app">NBT Manager app</a> for Android. Join the
-          car's Wi-Fi and compare six digits with the car. No binary release yet: build it from source.</p>
+        <p>Open the NBT Manager app, scan the code on the car's screen and compare six digits.</p>
+        <p class="fine">The app is coming to Google Play. Today it is
+          <a href="https://github.com/NBTFoundry/mobile-app">built from source</a>;
+          <a href="https://github.com/orgs/NBTFoundry/discussions/categories/announcements">announcements</a>
+          will say when it is out.</p>
       </li>
       <li>
         <h3>Install apps</h3>
-        <p>Open <b>Get apps</b>, download, install. The car checks each package's signature and the
-          driver confirms it on iDrive. A bad update rolls back by itself.</p>
+        <p>Open <b>Get apps</b>, pick one, install. The car checks it and asks you to confirm on iDrive.
+          A bad update rolls back by itself.</p>
       </li>
     </ol>
+    <div class="flow">
+      <figure>
+        <img src="assets/manager-install.gif" width="960" height="360" loading="lazy"
+             alt="On the car: an update arrives, the driver reviews and installs it, the health check passes">
+        <figcaption>On the car: review, install, health check.</figcaption>
+      </figure>
+      <figure>
+        <picture>
+          <source srcset="assets/hero-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="assets/hero-light.png" width="1920" height="760" loading="lazy"
+               alt="The phone app over Wi-Fi and the desktop installer over the ENET cable reach NBT Manager on the head unit">
+        </picture>
+        <figcaption>No laptop? The phone app can do the first install too, with a Wi-Fi ENET adapter.</figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Why it is safe to try</p>
+      <h2>You stay in control</h2>
+    </div>
     <ul class="features">
       <li><h3>Approved on the car</h3><p>The phone only asks. Every install and removal is confirmed on iDrive.</p></li>
       <li><h3>Safe updates</h3><p>A new version must start and stay healthy, or the previous one comes back.</p></li>
@@ -108,39 +217,93 @@
     </ul>
   </section>
 
-  <section id="build" class="wrap section">
+  <section id="faq" class="wrap section">
     <div class="section-head">
-      <h2>Apps in minutes</h2>
-      <p>Open the template, start your coding agent and tell it what you want on the screen. It
-        already knows the SDK, the iDrive controller, gamepads and the car's speakers: the skills
-        that teach it come with the SDK. The compiler is a free download for Linux, macOS and
-        Windows. Your app runs on your desktop first, and the same code builds for the car.</p>
-      <p>Have an old game or emulator you love? Point the agent at its source code. Doom and four
-        emulators reached the car this way.</p>
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions before you start</h2>
     </div>
-    <div class="links">
-      <a href="https://github.com/NBTFoundry/sdk"><b>SDK</b><span>Screen, audio, input, files, settings; a libretro host for emulators.</span></a>
-      <a href="https://github.com/NBTFoundry/template"><b>Template</b><span>The bare minimum to start an application.</span></a>
-      <a href="https://github.com/NBTFoundry/examples"><b>Examples</b><span>Controls, settings, status; an LVGL interface.</span></a>
-      <a href="https://github.com/NBTFoundry/toolchains"><b>Toolchain</b><span>Clang and LLD for Linux, macOS and Windows.</span></a>
-      <a href="https://github.com/NBTFoundry/sdk/blob/main/docs/porting.md"><b>Agent skills</b><span>Porting, controls, tests and packaging, step by step.</span></a>
-      <a href="https://github.com/NBTFoundry/community-apps"><b>Publish it</b><span>Open a pull request: we build your app from its source, sign it and list it in Get apps.</span></a>
+    <div class="faq">
+      <details><summary>What does it cost?</summary>
+        <p>Nothing. NBT Manager and every app are free and open source, with no account, no ads and no tracking.
+          You only buy the cable.</p></details>
+      <details><summary>Does it change iDrive?</summary>
+        <p>It adds one entry, App Manager, to the iDrive menu. Your apps start from there; it replaces nothing
+          BMW put on the screen.</p></details>
+      <details><summary>Can I undo it?</summary>
+        <p>Yes. Each app is removed from the phone, and the desktop installer removes NBT Manager itself.</p></details>
+      <details><summary>Can it damage my car?</summary>
+        <p>It can. Changing a head unit's software can brick it, and recovery may need professional service at
+          your expense. App updates roll back by themselves, but nothing here is risk free:
+          <a href="#warning">read the warning</a>.</p></details>
+      <details><summary>What about my warranty?</summary>
+        <p>Modifying the head unit may affect manufacturer support or warranty coverage, depending on where you
+          live. If that matters to you, do not install it.</p></details>
+      <details><summary>Can I use the apps while driving?</summary>
+        <p>No. Use them only while parked.</p></details>
+      <details><summary>Are games included?</summary>
+        <p>Only Doom's shareware episode. For the emulators you bring games you have the right to use, from the
+          phone or a USB stick.</p></details>
+      <details><summary>Does it work with an iPhone?</summary>
+        <p>No. The phone app is for Android only.</p></details>
+      <details><summary>Is this from BMW?</summary>
+        <p>No. NBTFoundry is an independent open-source project, not affiliated with or endorsed by BMW.</p></details>
+      <details><summary>Where do I get help?</summary>
+        <p>In the <a href="https://github.com/orgs/NBTFoundry/discussions">discussions</a>: questions, ideas and
+          photos of your car are welcome.</p></details>
+    </div>
+  </section>
+
+  <section id="build" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Developers</p>
+        <h2>Apps in minutes</h2>
+        <p>Open the template, start your coding agent and tell it what you want on the screen. It
+          already knows the SDK, the iDrive controller, gamepads and the car's speakers: the skills
+          that teach it come with the SDK. The compiler is a free download for Linux, macOS and
+          Windows. Your app runs on your desktop first, and the same code builds for the car.</p>
+        <p>Have an old game or emulator you love? Point the agent at its source code. Doom and four
+          emulators reached the car this way.</p>
+      </div>
+      <div class="links">
+        <a href="https://github.com/NBTFoundry/sdk"><b>SDK</b><span>Screen, audio, input, files, settings; a libretro host for emulators.</span></a>
+        <a href="https://github.com/NBTFoundry/template"><b>Template</b><span>The bare minimum to start an application.</span></a>
+        <a href="https://github.com/NBTFoundry/examples"><b>Examples</b><span>Controls, settings, status; an LVGL interface.</span></a>
+        <a href="https://github.com/NBTFoundry/toolchains"><b>Toolchain</b><span>Clang and LLD for Linux, macOS and Windows.</span></a>
+        <a href="https://github.com/NBTFoundry/sdk/blob/main/docs/porting.md"><b>Agent skills</b><span>Porting, controls, tests and packaging, step by step.</span></a>
+        <a href="https://github.com/NBTFoundry/community-apps"><b>Publish it</b><span>Open a pull request: we build your app from its source, sign it and list it in Get apps.</span></a>
+      </div>
     </div>
   </section>
 
   <section id="soon" class="wrap section">
     <div class="section-head">
+      <p class="eyebrow">Roadmap</p>
       <h2>Coming soon</h2>
     </div>
     <ul class="features">
-      <li><h3>Your own key</h3><p>Sign an app with your own key, add the key from the phone, and run your builds on your car.</p></li>
-      <li><h3>Engine data</h3><p>Engine readings and fault codes for the apps that ask for them.</p></li>
+      <li><h3>On Google Play</h3><p>The phone app, without building it yourself.</p></li>
+      <li><h3>Fault codes</h3><p>Read and clear the car's fault codes on the screen, with more engine readings for the gauges.</p></li>
       <li><h3>Phone companions</h3><p>An app can bring its own screen to the phone app, for settings, files or a second display.</p></li>
+      <li><h3>Your own key</h3><p>Sign an app with your own key, add the key from the phone, and run your builds on your car.</p></li>
     </ul>
+  </section>
+
+  <section id="community" class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Community</p>
+      <h2>Ask, share, follow</h2>
+    </div>
+    <div class="links">
+      <a href="https://github.com/orgs/NBTFoundry/discussions/categories/q-a"><b>Ask a question</b><span>Compatibility, installing, an app that misbehaves.</span></a>
+      <a href="https://github.com/orgs/NBTFoundry/discussions/categories/show-and-tell"><b>Show your car</b><span>Photos and videos of what runs on your screen.</span></a>
+      <a href="https://github.com/orgs/NBTFoundry/discussions/categories/announcements"><b>Follow releases</b><span>New apps, NBT Manager releases and the phone app's arrival.</span></a>
+    </div>
   </section>
 
   <section id="support" class="wrap section">
     <div class="section-head">
+      <p class="eyebrow">Support</p>
       <h2>Support the project</h2>
       <p>NBTFoundry is free and open source. If it is useful to you, you can support its development.</p>
     </div>
@@ -151,7 +314,7 @@
     <p class="note">Donations are optional and buy nothing: every app stays free.</p>
   </section>
 
-  <section class="wrap section">
+  <section id="warning" class="wrap section">
     <div class="warning">
       <b>Installing or modifying this software can brick your head unit.</b> Recovery may require professional
       service or replacement, at your expense. Provided as is; use at your own risk, subject to applicable law.
@@ -164,8 +327,8 @@
 <footer class="wrap footer">
   <p>Not affiliated with or endorsed by BMW AG or any other trademark owner named here. BMW, iDrive and NBT
     are trademarks of BMW AG; DOOM of id Software; Super Nintendo of Nintendo; PlayStation of Sony Interactive
-    Entertainment Inc.; Mega Drive, Mega-CD, 32X and Master System of Sega Corporation; Android Auto of
-    Google LLC.</p>
+    Entertainment Inc.; Mega Drive, Mega-CD, 32X and Master System of Sega Corporation; Android, Android Auto
+    and Google Play of Google LLC; iPhone of Apple Inc.</p>
   <p>MPL-2.0 · <a href="privacy.html">Privacy</a> · <a href="https://github.com/sponsors/fpoussin">Sponsor</a> · <a href="https://github.com/NBTFoundry/NBTFoundry.github.io">Source</a> ·
     <a href="catalog.json">catalog.json</a> · Updated <span id="catalog-generated"></span></p>
 </footer>

@@ -160,10 +160,9 @@
     if (generated) generated.textContent = dateText(catalog.generated);
   }
 
-  // The hero's screen: one capture at a time, changed by its buttons or every few seconds.
-  function wireDisplay() {
-    const display = document.getElementById("display");
-    if (!display) return;
+  // A set of slides (the hero's screen, the themes): one at a time, changed by its buttons
+  // or every `data-slides` milliseconds.
+  function wireDisplay(display) {
     const slides = [...display.querySelectorAll(".slide")];
     const buttons = [...display.querySelectorAll("[data-show]")];
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -195,11 +194,11 @@
         show(button.dataset.show);
       });
     }
-    if (!still && slides.length > 1) timer = setInterval(next, 9000);
+    if (!still && slides.length > 1) timer = setInterval(next, Number(display.dataset.slides) || 9000);
   }
 
   function start() {
-    wireDisplay();
+    document.querySelectorAll("[data-slides]").forEach(wireDisplay);
     load();
   }
 

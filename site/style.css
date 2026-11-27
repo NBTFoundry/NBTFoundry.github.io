@@ -240,6 +240,18 @@ nav a:hover { color: var(--ink); text-decoration: none; border-bottom-color: var
 .flow img { display: block; width: 100%; height: auto; border-radius: var(--r); border: 1px solid var(--line); background: var(--panel); }
 .flow figcaption { color: var(--muted); }
 .flow figcaption b { display: block; margin-bottom: 4px; color: var(--ink); font-size: 19px; }
+/* Slides outside the hero: the themes. */
+.switch { margin: 24px 0 0; }
+.switch-stage { position: relative; aspect-ratio: 8 / 3; overflow: hidden; border-radius: var(--r); border: 1px solid var(--line); background: #0a0d12; }
+.switch figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; margin-top: 12px; font-size: 14px; color: var(--muted); }
+.switch-tabs { display: flex; gap: 22px; }
+.switch-tabs button {
+  appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; padding: 4px 0;
+  color: var(--muted); font: 700 12px/1.4 inherit; font-family: inherit; letter-spacing: 0.14em; text-transform: uppercase;
+  cursor: pointer;
+}
+.switch-tabs button:hover, .switch-tabs button.is-on { color: var(--ink); }
+.switch-tabs button.is-on { border-bottom-color: var(--glow); }
 .pair { margin: 16px 0 0; }
 .pair img { display: block; width: 100%; height: auto; border-radius: var(--r); border: 1px solid var(--line); background: #0a0d12; }
 .pair figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }

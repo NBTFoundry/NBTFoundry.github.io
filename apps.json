@@ -32,6 +32,16 @@
    "featured": true
   },
   {
+   "id": "diagnostics",
+   "repo": "NBTFoundry/nf-diagnostics",
+   "name": "Diagnostics",
+   "title": "Fault codes",
+   "summary": "Read and clear the fault codes of the car's main control units, on the iDrive screen or the phone.",
+   "license": "MPL-2.0",
+   "category": "tool",
+   "icon": "icons/diagnostics.svg"
+  },
+  {
    "id": "doom",
    "repo": "NBTFoundry/nf-doom",
    "name": "Doom",

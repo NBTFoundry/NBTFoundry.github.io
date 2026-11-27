@@ -28,6 +28,7 @@ REPO = re.compile(r"[A-Za-z0-9-]{1,39}/[A-Za-z0-9._-]{1,100}\Z")
 ICON = re.compile(r"icons/[a-z0-9_-]{1,48}\.(png|svg|webp)\Z")
 COVER = re.compile(r"screens/[a-z0-9_-]{1,48}\.(png|webp)\Z")
 TEXT_LIMITS = {"name": 40, "summary": 160, "license": 80, "category": 20}
+NOTES_LINES, NOTES_LINE = 24, 300
 
 
 def fail(message):
@@ -131,6 +132,21 @@ def previous_files(catalog):
     return cached
 
 
+def release_notes(body):
+    """What a release's page says before its rule (the release workflows put the lines about
+    the signature and the build after it), as plain lines: "### Heading", "- item" or a
+    sentence. A page without a rule has no notes."""
+    head, rule, _ = (body or "").replace("\r\n", "\n").partition("\n---\n")
+    lines = []
+    for line in head.split("\n") if rule else []:
+        line = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", line.strip())  # a link: its text
+        line = re.sub(r"^\* ", "- ", line)
+        line = re.sub(r"[`*]", "", line).strip()
+        if line and not line.startswith("<!--") and all(ord(c) >= 32 and ord(c) != 127 for c in line):
+            lines.append(line[:NOTES_LINE])
+    return lines[:NOTES_LINES]
+
+
 def verify_release(entry, release, keys, cached, work):
     """The catalog record of one GitHub release, or None when it has no file for the catalog."""
     manager = entry["id"] == "manager"
@@ -164,7 +180,7 @@ def verify_release(entry, release, keys, cached, work):
                   "bridge": main.get("bridge"), "properties": main.get("properties", []),
                   "text": main.get("text", []), "files": [item for _, item in files]}
     record.update(prerelease=bool(release.get("prerelease")), date=release.get("published_at"),
-                  page=release.get("html_url"))
+                  page=release.get("html_url"), notes=release_notes(release.get("body")))
     return record
 
 

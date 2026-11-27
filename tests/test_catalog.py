@@ -161,6 +161,25 @@ class CatalogTest(unittest.TestCase):
         self.assertIsNone(build_catalog.tag_version("clock-v1.2", "clock"))
         self.assertIsNone(build_catalog.tag_version("doom-v1.0.0", None))
 
+    def test_release_notes(self):
+        body = ("<!-- a comment -->\r\n### New\r\n\r\n- **Settings \u203a Theme** takes `the make`.\n"
+                "* See [the page](https://example/x).\n- bad\x07line\n\n---\n\nSigned with the key; built from abc.\n")
+        self.assertEqual(build_catalog.release_notes(body),
+                         ["### New", "- Settings \u203a Theme takes the make.", "- See the page."])
+        self.assertEqual(build_catalog.release_notes("Signed with the key; built from abc.\n"), [])
+        self.assertEqual(build_catalog.release_notes(None), [])
+        long = build_catalog.release_notes("\n".join("- " + "x" * 400 for _ in range(40)) + "\n---\n")
+        self.assertEqual((len(long), len(long[0])), (build_catalog.NOTES_LINES, build_catalog.NOTES_LINE))
+
+    def test_notes_follow_the_release_page_even_from_the_previous_catalog(self):
+        self.github.add("NBTFoundry/nf-doom", "v1.0.2", package(self.keys.apps))
+        first = self.build()
+        self.assertEqual(first["apps"][0]["releases"][0]["notes"], [])
+        self.github.by_repo["NBTFoundry/nf-doom"][0]["body"] = "### Fixed\n\n- Sound.\n\n---\n\nSigned.\n"
+        second = self.build(first)
+        self.assertEqual(second["apps"][0]["releases"][0]["notes"], ["### Fixed", "- Sound."])
+        self.assertEqual(len(self.github.downloads), 1)
+
     def test_stable_and_newer_beta(self):
         self.github.add("NBTFoundry/nf-doom", "v1.0.1", package(self.keys.apps, version="1.0.1", sequence=1000001))
         self.github.add("NBTFoundry/nf-doom", "v1.0.2", package(self.keys.apps))

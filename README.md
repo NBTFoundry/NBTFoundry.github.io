@@ -43,8 +43,10 @@ python3 -I tools/render_site.py --catalog out/catalog.json --output _site
 `schema` 1. `apps[]` in `apps.json` order: `id`, `name`, `summary`, `repo`, `license`, `category`,
 `icon`, `title`, `cover`, `featured` (the last three for the landing page; the phone app ignores them),
 `releases[]` (newest first, at most a beta then a stable): `version`, `sequence` (a string),
-`prerelease`, `date`, `page`, `compat`, `bridge`, `properties`, `text`, `files[]` (`name`, `url`,
-`size`, `sha256`, `version`, `sequence`), one per release.
+`prerelease`, `date`, `page`, `compat`, `bridge`, `properties`, `text`, `notes`, `files[]` (`name`,
+`url`, `size`, `sha256`, `version`, `sequence`), one per release. `notes` is what the release's page
+says before its rule, as plain lines (`### Heading`, `- item` or a sentence; at most 24 of 300
+characters, empty for a page without notes): the phone app shows them as what is new.
 
 ## Licence
 

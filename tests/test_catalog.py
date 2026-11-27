@@ -191,7 +191,7 @@ class CatalogTest(unittest.TestCase):
         self.allow([{"id": "manager", "repo": "NBTFoundry/manager"}])
         self.github.add("NBTFoundry/manager", "v0.3.1", release(self.keys.manager), True, name="nbt-manager-0.3.1.nbtr")
         files = self.build()["apps"][0]["releases"][0]["files"]
-        self.assertEqual([(f["version"], f["format"]) for f in files], [("0.3.1", 3)])
+        self.assertEqual([(f["name"], f["version"]) for f in files], [("nbt-manager-0.3.1.nbtr", "0.3.1")])
 
     def test_allowlist_checks(self):
         for entry in ({"id": "Doom", "repo": "a/b"}, {"id": "doom", "repo": "a"},

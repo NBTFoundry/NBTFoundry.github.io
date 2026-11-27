@@ -44,8 +44,7 @@ python3 -I tools/render_site.py --catalog out/catalog.json --output _site
 `icon`, `title`, `cover`, `featured` (the last three for the landing page; the phone app ignores them),
 `releases[]` (newest first, at most a beta then a stable): `version`, `sequence` (a string),
 `prerelease`, `date`, `page`, `compat`, `bridge`, `properties`, `text`, `files[]` (`name`, `url`,
-`size`, `sha256`, `version`, `sequence`; the manager's also `format`). NBT Manager's releases carry two
-files, the release and its step release.
+`size`, `sha256`, `version`, `sequence`), one per release.
 
 ## Licence
 

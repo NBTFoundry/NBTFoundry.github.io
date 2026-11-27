@@ -136,7 +136,9 @@ def verify_release(entry, release, keys, cached, work):
     manager = entry["id"] == "manager"
     suffix = ".nbtr" if manager else ".nbt"
     assets = [a for a in release.get("assets", []) if a.get("name", "").endswith(suffix) and a.get("state") == "uploaded"]
-    if not assets or (not manager and len(assets) != 1):
+    if manager:  # the release itself: nbt-manager-<version>.nbtr
+        assets = [a for a in assets if a["name"] == f"nbt-manager-{release.get('tag_name', '')[1:]}.nbtr"]
+    if len(assets) != 1:
         return None
     hit = [cached.get(a["id"]) for a in assets]
     if (all(h and h[0] == a["updated_at"] for h, a in zip(hit, assets)) and len({id(h[1]) for h in hit}) == 1
@@ -155,8 +157,6 @@ def verify_release(entry, release, keys, cached, work):
             item = {"name": asset["name"], "url": asset["browser_download_url"], "size": asset["size"],
                     "sha256": digest, "asset": asset["id"], "updated": asset["updated_at"],
                     "version": info["version"], "sequence": info["sequence"]}
-            if manager:
-                item["format"] = info["format"]
             files.append((info, item))
         files.sort(key=lambda pair: int(pair[0]["sequence"]), reverse=True)
         main = files[0][0]

@@ -25,20 +25,30 @@
 </header>
 <main class="wrap section prose">
   <h1>Privacy</h1>
-  <p class="lede-left">NBT Manager for Android (<code>org.nbtfoundry.manager</code>). Updated November 24, 2026.</p>
+  <p class="lede-left">NBT Manager for Android (<code>org.nbtfoundry.manager</code>). Updated November 28, 2026.</p>
 
-  <h2>No account, no tracking</h2>
-  <p>The app has no account, no advertising and no tracking. NBTFoundry receives no data from it.</p>
-  <p>One exception, from Google: the QR scanner is Google's ML Kit, which sends Google device information
+  <h2>No account, no advertising</h2>
+  <p>The app has no account and no advertising. NBTFoundry receives no data from it, unless you turn on
+    <b>Share diagnostics</b> (below). That is off until you say yes.</p>
+  <p>One thing comes from Google: the QR scanner is Google's ML Kit, which sends Google device information
     (manufacturer, model, Android version) for its diagnostics and usage statistics, over HTTPS. Google does
     not pass it on (<a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit's data
     disclosure</a>).</p>
+
+  <h2>Diagnostics, only if you agree</h2>
+  <p>The app asks once whether it may share diagnostics; <b>More › Settings › Share diagnostics</b> changes
+    the answer at any time. When it is on, the app sends <a href="https://expo.dev">Expo</a> (the service it
+    is built with) how long it takes to start, its errors and its crashes, with the phone's model, the
+    Android version, the app's version and a random number that stands for this installation. NBTFoundry
+    reads them there to fix problems. Nothing about your car, your applications or your files is in them.
+    Turning it off deletes what was not sent yet (<a href="https://expo.dev/privacy">Expo's privacy
+    policy</a>).</p>
 
   <h2>Kept on your phone</h2>
   <ul>
     <li>Your paired cars: their names and addresses, and the phone's signing key for each, which stays in
       the Android Keystore and never leaves the phone.</li>
-    <li>Your library of application packages, your language and beta preferences.</li>
+    <li>The application packages you downloaded, and your settings.</li>
     <li>Logs and crash reports you read from a car. They leave the phone only when you share them.</li>
   </ul>
   <p>Uninstalling the app deletes all of it. The app is excluded from Android backups.</p>
@@ -46,12 +56,16 @@
   <h2>Connections</h2>
   <ul>
     <li><b>Your car</b>, over its own Wi-Fi, when you pair, read, install or change something.</li>
-    <li><b>GitHub</b>, when you open Get apps or download from it: the catalog from
+    <li><b>GitHub</b>, when you check for new versions in Apps or download one: the catalog from
       <code>nbtfoundry.github.io</code> and packages from <code>github.com</code>. GitHub sees your IP
       address, as for any web request (<a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>).</li>
+    <li><b>Expo</b>, when you check for an update of the app itself (More › About, or together with new
+      versions in Apps): the app's version and the random number of this installation, so that Expo can
+      answer with the right update. With diagnostics on, also what is described above.</li>
     <li><b>Google</b>, after you use the QR scanner: ML Kit's device information, above.</li>
   </ul>
-  <p>The app makes no other connection.</p>
+  <p>The app makes no other connection. Each follows something you do, or a choice you made: diagnostics
+    once you agreed to them, and <b>More › When the app opens</b>, which is off until you turn it on.</p>
 
   <h2>Permissions</h2>
   <ul>

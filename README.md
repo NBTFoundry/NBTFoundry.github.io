@@ -11,6 +11,8 @@ The landing page and the application catalog the phone app reads:
   application cards (the featured ones first, the others A to Z), NBT Manager's release and the
   update date: the same file as the phone app.
 - `tools/share-card.html`: the link preview, `site/assets/share.png` (the command is in the file).
+- `tools/phone_car.py`: the phone beside the car's screen (`theme-*.webp`, `phone-install.webp`),
+  from the phone app's and the manager's captures.
 - `tools/render_site.py`: `site/` plus `catalog.json`.
 - `.github/workflows/pages.yml`: on push, every 30 minutes and by hand. GitHub pauses the schedule
   after 60 days without a commit here: re-enable it under Actions.

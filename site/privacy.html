@@ -28,21 +28,20 @@
   <p class="lede-left">NBT Manager for Android (<code>org.nbtfoundry.manager</code>). Updated November 28, 2026.</p>
 
   <h2>No account, no advertising</h2>
-  <p>The app has no account and no advertising. NBTFoundry receives no data from it, unless you turn on
-    <b>Share diagnostics</b> (below). That is off until you say yes.</p>
+  <p>The app has no account and no advertising. The only data NBTFoundry receives from it is its
+    diagnostics (below), which one switch turns off.</p>
   <p>One thing comes from Google: the QR scanner is Google's ML Kit, which sends Google device information
     (manufacturer, model, Android version) for its diagnostics and usage statistics, over HTTPS. Google does
     not pass it on (<a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit's data
     disclosure</a>).</p>
 
-  <h2>Diagnostics, only if you agree</h2>
-  <p>The app asks once whether it may share diagnostics; <b>More › Settings › Share diagnostics</b> changes
-    the answer at any time. When it is on, the app sends <a href="https://expo.dev">Expo</a> (the service it
-    is built with) how long it takes to start, its errors and its crashes, with the phone's model, the
-    Android version, the app's version and a random number that stands for this installation. NBTFoundry
-    reads them there to fix problems. Nothing about your car, your applications or your files is in them.
-    Turning it off deletes what was not sent yet (<a href="https://expo.dev/privacy">Expo's privacy
-    policy</a>).</p>
+  <h2>Diagnostics, which you can turn off</h2>
+  <p>To find and fix problems, the app sends <a href="https://expo.dev">Expo</a> (the service it is built
+    with) how long it takes to start, its errors and its crashes, with the phone's model, the Android
+    version, the app's version and a random number that stands for this installation. NBTFoundry reads
+    them there. Nothing about your car, your applications or your files is in them.
+    <b>More › Settings › Share diagnostics</b> turns this off at any time, and deletes what was not sent
+    yet (<a href="https://expo.dev/privacy">Expo's privacy policy</a>).</p>
 
   <h2>Kept on your phone</h2>
   <ul>
@@ -64,8 +63,8 @@
       answer with the right update. With diagnostics on, also what is described above.</li>
     <li><b>Google</b>, after you use the QR scanner: ML Kit's device information, above.</li>
   </ul>
-  <p>The app makes no other connection. Each follows something you do, or a choice you made: diagnostics
-    once you agreed to them, and <b>More › When the app opens</b>, which is off until you turn it on.</p>
+  <p>The app makes no other connection. Apart from diagnostics, each follows something you do, or a
+    choice under <b>More › When the app opens</b>, which is off until you turn it on.</p>
 
   <h2>Permissions</h2>
   <ul>

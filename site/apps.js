@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 // The application cards, NBT Manager's release and the "Updated" date, read from
-// catalog.json: the file the phone app's Get apps tab reads. Also the hero's screen.
+// catalog.json: the file the phone app's Apps tab reads. Also the hero's screen.
 "use strict";
 
 (() => {
